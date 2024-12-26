@@ -35,269 +35,122 @@ namespace DSEV
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-
-
-
-            if (e.KeyCode == Keys.Q)
+            if (e.KeyCode == Keys.R)
             {
-                Global.환경설정.검사시작 = false;
-
-                
-
-                Int32 서보초기X속도 = 50000;
-                Int32 서보초기X위치 = 17000000;
-
-                Int32 서보초기Y속도 = 50000;
-                Int32 서보초기Y위치 = 12000000;
-
-                Int32 서보초기Z속도 = 100000;
-                Int32 서보초기Z위치 = 11400000;
-
-
-                Global.장치통신.서보X속도 = 서보초기X속도;
-                Global.장치통신.서보X위치 = 서보초기X위치;
-                Global.장치통신.서보Y속도 = 서보초기Y속도;
-                Global.장치통신.서보Y위치 = 서보초기Y위치;
-                Global.장치통신.서보Z속도 = 서보초기Z속도;
-                Global.장치통신.서보Z위치 = 서보초기Z위치;
-
-                Debug.WriteLine("서보 동작");
-                Global.장치통신.상부촬영트리거신호 = true;
-
-                //움직임 완료 신호 확인
-                
+               
             }
 
-            if (e.KeyCode == Keys.W)
-            {
-
-                Global.환경설정.검사시작 = true;
-                Global.환경설정.검사번호++;
-                Global.검사자료.검사시작(Global.환경설정.검사번호);
-                /////////////////////
-                ///
-                Int32 서보검사X속도 = 50000;
-                Int32 서보검사X위치 = 17000000;
-
-                Int32 서보검사Y속도 = 50000;
-                Int32 서보검사Y위치 = 12000000;
-
-                Int32 서보검사Z속도 = 100000;
-                Int32 서보검사Z위치 = 10400000;
-
-                Int32 대기시간 = 100;
-                Int32 갯수 = 50;
-
-                if (Global.환경설정.고정밀모드)
-                {
-                   서보검사X속도 = 50000;
-                   서보검사X위치 = 17000000;
-
-                   서보검사Y속도 = 50000;
-                   서보검사Y위치 = 12000000;
-
-                   서보검사Z속도 = 25000;
-                   서보검사Z위치 = 10400000;
-
-                   대기시간 = 70;
-                   갯수 = 200;
-                }
-
-
-
-
-                Global.장치통신.서보X속도 = 서보검사X속도;
-                Global.장치통신.서보X위치 = 서보검사X위치;
-                Global.장치통신.서보Y속도 = 서보검사Y속도;
-                Global.장치통신.서보Y위치 = 서보검사Y위치;
-                Global.장치통신.서보Z속도 = 서보검사Z속도;
-                Global.장치통신.서보Z위치 = 서보검사Z위치;
-
-                Debug.WriteLine("서보동작 및 라이브촬영 시작");
-                HikeGigE 라이브촬영용카메라 = Global.그랩제어[카메라구분.Cam01] as HikeGigE;
-                
-                string 경로 = Path.Combine(Global.환경설정.사진저장, Global.환경설정.선택모델.ToString()) + $"{DateTime.Now.ToString("yyMMdd_HHmmss_fff")}";
-                라이브촬영용카메라.라이브폴더경로 = 경로;
-                라이브촬영용카메라.이미지번호 = 1;
-                Global.장치통신.상부촬영트리거신호 = true;
-                라이브촬영용카메라.GrabCont(경로, 대기시간, 갯수);
-            }
-
-            if (e.KeyCode == Keys.L)
-            {
-                //Debug.WriteLine("softwareTrigger On");
-                Debug.WriteLine(Global.환경설정.고정밀모드);
-            }
-
-            if (e.KeyCode == Keys.P)
-            {
-                Debug.WriteLine("softwareTrigger On");
-                Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].코드);
-            }
-
-            if (e.KeyCode == Keys.I)
-            {
-                Debug.WriteLine("softwareTrigger On");
-                Global.그랩제어[카메라구분.Cam01].SoftwareTrigger();
-            }
-
-            if (e.KeyCode == Keys.A)
-            {
-                Debug.WriteLine("Active On");
-                Global.그랩제어[카메라구분.Cam01].Active();
-            }
-
-            if (e.KeyCode == Keys.S)
-            {
-                Debug.WriteLine("Stop On");
-                Global.그랩제어[카메라구분.Cam01].Stop();
-            }
-
-
-            //if(e.KeyCode == Keys.S)
-            //{
-            //    Debug.WriteLine("센서세이브 트리거");
-
-            //    Global.센서제어.SaveZeroSet(센서컨트롤러.컨트롤러1, 6);
-            //    Global.센서제어.SaveZeroSet(센서컨트롤러.컨트롤러2, 6);
-            //    Global.센서제어.SaveZeroSet(센서컨트롤러.컨트롤러3, 7);
-            //    Global.센서제어.SaveZeroSet(센서컨트롤러.컨트롤러4, 8);
-            //}
-            //if (e.KeyCode == Keys.P)
-            //{
-            //    Debug.WriteLine("트리거2검사신호");
-            //    if (Global.장치통신.하부촬영트리거2검사신호)
-            //    {
-            //        Global.장치통신.하부촬영트리거2검사신호 = false;
-            //        Debug.WriteLine("트리거2검사신호끔");
-            //        return;
-            //    }
-
-            //    Global.장치통신.하부촬영트리거2검사신호 = true;
-            //    Debug.WriteLine("트리거2검사신호켬");
-            //}
             //if (e.KeyCode == Keys.Q)
             //{
-            //    Debug.WriteLine("Q눌림^^");
-            //    Global.그랩제어.Active(카메라구분.Cam01);
+            //    Global.환경설정.검사시작 = false;
 
+            //    Int32 서보초기X속도 = 50000;
+            //    Int32 서보초기X위치 = 17000000;
+
+            //    Int32 서보초기Y속도 = 50000;
+            //    Int32 서보초기Y위치 = 12000000;
+
+            //    Int32 서보초기Z속도 = 100000;
+            //    Int32 서보초기Z위치 = 11400000;
+
+
+            //    Global.장치통신.서보X속도 = 서보초기X속도;
+            //    Global.장치통신.서보X위치 = 서보초기X위치;
+            //    Global.장치통신.서보Y속도 = 서보초기Y속도;
+            //    Global.장치통신.서보Y위치 = 서보초기Y위치;
+            //    Global.장치통신.서보Z속도 = 서보초기Z속도;
+            //    Global.장치통신.서보Z위치 = 서보초기Z위치;
+
+            //    Debug.WriteLine("서보 동작");
+            //    Global.장치통신.상부촬영트리거신호 = true;
+
+            //    //움직임 완료 신호 확인
 
             //}
+
             //if (e.KeyCode == Keys.W)
             //{
-            //    Debug.WriteLine("W눌림^^");
-            //    Global.그랩제어.Active(카메라구분.Cam02);
-            //    Global.그랩제어.Active(카메라구분.Cam03);
 
+            //    Global.환경설정.검사시작 = true;
+            //    Global.환경설정.검사번호++;
+            //    Global.검사자료.검사시작(Global.환경설정.검사번호);
+            //    ///
+            //    Int32 서보검사X속도 = 50000;
+            //    Int32 서보검사X위치 = 17000000;
+
+            //    Int32 서보검사Y속도 = 50000;
+            //    Int32 서보검사Y위치 = 12000000;
+
+            //    Int32 서보검사Z속도 = 100000;
+            //    Int32 서보검사Z위치 = 10400000;
+
+            //    Int32 대기시간 = 100;
+            //    Int32 갯수 = 50;
+
+            //    if (Global.환경설정.고정밀모드)
+            //    {
+            //       서보검사X속도 = 50000;
+            //       서보검사X위치 = 17000000;
+
+            //       서보검사Y속도 = 50000;
+            //       서보검사Y위치 = 12000000;
+
+            //       서보검사Z속도 = 25000;
+            //       서보검사Z위치 = 10400000;
+
+            //       대기시간 = 70;
+            //       갯수 = 200;
+            //    }
+
+            //    Global.장치통신.서보X속도 = 서보검사X속도;
+            //    Global.장치통신.서보X위치 = 서보검사X위치;
+            //    Global.장치통신.서보Y속도 = 서보검사Y속도;
+            //    Global.장치통신.서보Y위치 = 서보검사Y위치;
+            //    Global.장치통신.서보Z속도 = 서보검사Z속도;
+            //    Global.장치통신.서보Z위치 = 서보검사Z위치;
+
+            //    Debug.WriteLine("서보동작 및 라이브촬영 시작");
+            //    HikeGigE 라이브촬영용카메라 = Global.그랩제어[카메라구분.Cam01] as HikeGigE;
+
+            //    string 경로 = Path.Combine(Global.환경설정.사진저장, Global.환경설정.선택모델.ToString()) + $"{DateTime.Now.ToString("yyMMdd_HHmmss_fff")}";
+            //    라이브촬영용카메라.라이브폴더경로 = 경로;
+            //    라이브촬영용카메라.이미지번호 = 1;
+            //    Global.장치통신.상부촬영트리거신호 = true;
+            //    라이브촬영용카메라.GrabCont(경로, 대기시간, 갯수);
             //}
-            //if (e.KeyCode == Keys.S)
-            //{
-            //    Debug.WriteLine("S눌림^^");
-            //    //Global.그랩제어.Active(카메라구분.Cam02);
-            //    //Global.그랩제어.Active(카메라구분.Cam03);
-            //    Debug.WriteLine($"투입버퍼 : {Global.장치통신.제품투입번호}\n검사지그1 : {Global.장치통신.상부촬영번호}\n검사지그2 : {Global.장치통신.상부인슐폭촬영번호}\n이송장치1 : {Global.장치통신.하부표면검사번호}\n검사지그4 : {Global.장치통신.레이져각인검사번호}\n검사지그5 : {Global.장치통신.큐알검증기검사번호}\n배출버퍼 : {Global.장치통신.결과요청번호}");
-            //}
+
             //if (e.KeyCode == Keys.L)
             //{
-            //    Debug.WriteLine("L눌림^^");
-            //    Global.라벨부착기제어.라벨부착(999);
-            //    //Global.레이져마킹제어.레이져마킹시작(25);
-            //    //Global.그랩제어.Active(카메라구분.Cam02);
-            //    //Global.그랩제어.Active(카메라구분.Cam03);
-            //    //Debug.WriteLine($"투입버퍼 : {Global.장치통신.제품투입번호}\n검사지그1 : {Global.장치통신.상부촬영번호}\n검사지그2 : {Global.장치통신.상부인슐폭촬영번호}\n이송장치1 : {Global.장치통신.하부표면검사번호}\n검사지그4 : {Global.장치통신.레이져각인검사번호}\n검사지그5 : {Global.장치통신.큐알검증기검사번호}\n배출버퍼 : {Global.장치통신.결과요청번호}");
-            //}
-            //if (e.KeyCode == Keys.D)
-            //{
-            //    try
-            //    {
-            //        Debug.WriteLine("D눌림^^");
-            //        Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-            //        Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
-            //        //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
-            //    }
-            //    catch (Exception a)
-            //    {
-            //        Global.오류로그("Testing", "센서제어", a.Message, true);
-            //    }
-            //    //Debug.WriteLine("D눌림^^");
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
-            //    //Global.레이져마킹제어.레이져마킹시작(25);
-            //    //Global.그랩제어.Active(카메라구분.Cam02);
-            //    //Global.그랩제어.Active(카메라구분.Cam03);
-            //    //Debug.WriteLine($"투입버퍼 : {Global.장치통신.제품투입번호}\n검사지그1 : {Global.장치통신.상부촬영번호}\n검사지그2 : {Global.장치통신.상부인슐폭촬영번호}\n이송장치1 : {Global.장치통신.하부표면검사번호}\n검사지그4 : {Global.장치통신.레이져각인검사번호}\n검사지그5 : {Global.장치통신.큐알검증기검사번호}\n배출버퍼 : {Global.장치통신.결과요청번호}");
+            //    //Debug.WriteLine("softwareTrigger On");
+            //    Debug.WriteLine(Global.환경설정.고정밀모드);
             //}
 
-
-            //if (e.KeyCode == Keys.C)
+            //if (e.KeyCode == Keys.P)
             //{
-            //    try
-            //    {
-            //        Debug.WriteLine("C눌림^^");
-            //        //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-            //        //Global.피씨통신.CTQ1검사(999);
-
-            //        Global.피씨통신.검사시작(999);
-            //    }
-            //    catch (Exception a)
-            //    {
-            //        Global.오류로그("Testing", "센서제어", a.Message, true);
-            //    }
-            //    //Debug.WriteLine("D눌림^^");
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
-            //    //Global.레이져마킹제어.레이져마킹시작(25);
-            //    //Global.그랩제어.Active(카메라구분.Cam02);
-            //    //Global.그랩제어.Active(카메라구분.Cam03);
-            //    //Debug.WriteLine($"투입버퍼 : {Global.장치통신.제품투입번호}\n검사지그1 : {Global.장치통신.상부촬영번호}\n검사지그2 : {Global.장치통신.상부인슐폭촬영번호}\n이송장치1 : {Global.장치통신.하부표면검사번호}\n검사지그4 : {Global.장치통신.레이져각인검사번호}\n검사지그5 : {Global.장치통신.큐알검증기검사번호}\n배출버퍼 : {Global.장치통신.결과요청번호}");
+            //    Debug.WriteLine("softwareTrigger On");
+            //    Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].코드);
             //}
 
-            //if (e.KeyCode == Keys.T)
+            //if (e.KeyCode == Keys.I)
             //{
-            //    try
-            //    {
-            //        Debug.WriteLine("T눌림^^");
-            //        //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-            //        //Global.피씨통신.CTQ1검사(999);
+            //    Debug.WriteLine("softwareTrigger On");
+            //    Global.그랩제어[카메라구분.Cam01].SoftwareTrigger();
+            //}
 
-            //        Global.피씨통신.검사시작(999);
-            //    }
-            //    catch (Exception a)
-            //    {
-            //        Global.오류로그("Testing", "센서제어", a.Message, true);
-            //    }
-            //    //Debug.WriteLine("D눌림^^");
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
-            //    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
-            //    //Global.레이져마킹제어.레이져마킹시작(25);
-            //    //Global.그랩제어.Active(카메라구분.Cam02);
-            //    //Global.그랩제어.Active(카메라구분.Cam03);
-            //    //Debug.WriteLine($"투입버퍼 : {Global.장치통신.제품투입번호}\n검사지그1 : {Global.장치통신.상부촬영번호}\n검사지그2 : {Global.장치통신.상부인슐폭촬영번호}\n이송장치1 : {Global.장치통신.하부표면검사번호}\n검사지그4 : {Global.장치통신.레이져각인검사번호}\n검사지그5 : {Global.장치통신.큐알검증기검사번호}\n배출버퍼 : {Global.장치통신.결과요청번호}");
-            //}
-            //if (e.KeyCode == Keys.Z)
+            //if (e.KeyCode == Keys.A)
             //{
-            //    MESSAGE message = new MESSAGE();
-            //    message.SetMessage(송신메세지아이디.REQ_PROCESS_START.ToString(), "EQU050", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fffff"), "F00395AB231;F00395AB231", String.Empty, String.Empty, TestIndexNum.ToString("0000"));
-            //    Global.mes통신.자료송신(message);
-            //    Debug.WriteLine("자료송신");
+            //    Debug.WriteLine("Active On");
+            //    Global.그랩제어[카메라구분.Cam01].Active();
             //}
-            //if (e.KeyCode == Keys.X)
+
+            //if (e.KeyCode == Keys.S)
             //{
-            //    MESSAGE message = new MESSAGE();
-            //    message.MSG_ID = "REQ_PROCESS_END";
-            //    message.SYSTEMID = "EQU050";
-            //    message.DATE_TIME = "2024-04-03 14:35:29.55808";
-            //    message.BARCODE_ID = "F00395AB231;F00395AB231";
-            //    message.KEY = TestIndexNum.ToString("0000");
-            //    Global.mes통신.자료송신(message);
-            //    Debug.WriteLine("자료송신");
+            //    Debug.WriteLine("Stop On");
+            //    Global.그랩제어[카메라구분.Cam01].Stop();
             //}
         }
 
-        
+
 
         private void ShowWaitForm()
         {

@@ -38,26 +38,34 @@ namespace DSEV.Schemas
             상부촬영트리거,
             [Address("W1002")]
             상부촬영완료,
-
             [Address("W1010")]
             PLC에러상태,
             [Address("W1020")]
             PLC에러리셋,
-
             [Address("W1201")]
             서보X위치,
             [Address("W1211")]
             서보X속도,
-
+            [Address("W1221")]
+            서보X조그정방향,
+            [Address("W1231")]
+            서보X조그역방향,
             [Address("W1301")]
             서보Y위치,
             [Address("W1311")]
             서보Y속도,
-
+            [Address("W1321")]
+            서보Y조그정방향,
+            [Address("W1331")]
+            서보Y조그역방향,
             [Address("W1401")]
             서보Z위치,
             [Address("W1411")]
             서보Z속도,
+            [Address("W1421")]
+            서보Z조그정방향,
+            [Address("W1431")]
+            서보Z조그역방향,
         }
 
         private 통신자료 입출자료 = new 통신자료();
@@ -82,10 +90,16 @@ namespace DSEV.Schemas
         #region TPA 제품 인덱스확인 by LHD
         public Int32 서보X위치 { get => this.입출자료.Get(정보주소.서보X위치); set => 정보쓰기(정보주소.서보X위치, value); }
         public Int32 서보X속도 { get => this.입출자료.Get(정보주소.서보X속도); set => 정보쓰기(정보주소.서보X속도, value); }
+        public Int32 서보X조그정방향 { set => 정보쓰기(정보주소.서보X조그정방향, ToBool(value)); }
+        public Int32 서보X조그역방향 { set => 정보쓰기(정보주소.서보X조그역방향, ToBool(value)); }
         public Int32 서보Y위치 { get => this.입출자료.Get(정보주소.서보Y위치); set => 정보쓰기(정보주소.서보Y위치, value); }
         public Int32 서보Y속도 { get => this.입출자료.Get(정보주소.서보Y속도); set => 정보쓰기(정보주소.서보Y속도, value); }
+        public Int32 서보Y조그정방향 { set => 정보쓰기(정보주소.서보Y조그정방향, ToBool(value)); }
+        public Int32 서보Y조그역방향 { set => 정보쓰기(정보주소.서보Y조그역방향, ToBool(value)); }
         public Int32 서보Z위치 { get => this.입출자료.Get(정보주소.서보Z위치); set => 정보쓰기(정보주소.서보Z위치, value); }
         public Int32 서보Z속도 { get => this.입출자료.Get(정보주소.서보Z속도); set => 정보쓰기(정보주소.서보Z속도, value); }
+        public Int32 서보Z조그정방향 { set => 정보쓰기(정보주소.서보Z조그정방향, ToBool(value)); }
+        public Int32 서보Z조그역방향 { set => 정보쓰기(정보주소.서보Z조그역방향, ToBool(value)); }
         #endregion
 
         // 트리거 입력 시 버퍼에 입력

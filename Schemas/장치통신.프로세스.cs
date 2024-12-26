@@ -36,7 +36,7 @@ namespace DSEV.Schemas
             if (오류 != 0)
             {
                 통신오류알림(오류);
-                Debug.WriteLine("오류확인");
+                //Debug.WriteLine("오류확인");
                 return false;
             }
             this.입출자료.Set(자료);

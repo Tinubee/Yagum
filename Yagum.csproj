@@ -604,6 +604,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Cognex.ico" />
+    <None Include="Resources\glyph_video.svg" />
+    <None Include="Resources\glyph_video1.svg" />
     <Content Include="Resources\Vm.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

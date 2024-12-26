@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResultInspection));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.e결과뷰어 = new DSEV.UI.Controls.Viewport3D();
             this.e외관결과 = new DevExpress.XtraEditors.TextEdit();
             this.Bind검사결과 = new System.Windows.Forms.BindingSource(this.components);
             this.eCTQ결과 = new DevExpress.XtraEditors.TextEdit();
@@ -41,13 +43,24 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.e결과목록 = new DSEV.UI.Controls.ResultGrid();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.e결과뷰어 = new DSEV.UI.Controls.Viewport3D();
+            this.e뷰어 = new Cogutils.RecordDisplay();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.b스냅 = new DevExpress.XtraBars.BarButtonItem();
+            this.b영상 = new DevExpress.XtraBars.BarCheckItem();
+            this.b조명 = new DevExpress.XtraBars.BarCheckItem();
+            this.b비전 = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.b카메라명 = new DevExpress.XtraBars.BarStaticItem();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.e외관결과.Properties)).BeginInit();
@@ -60,11 +73,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e뷰어)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -77,13 +92,20 @@
             this.layoutControl1.Controls.Add(this.e측정결과);
             this.layoutControl1.Controls.Add(this.e검사시간);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Location = new System.Drawing.Point(924, 36);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsView.AlwaysScrollActiveControlIntoView = false;
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1152, 900);
+            this.layoutControl1.Size = new System.Drawing.Size(996, 864);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // e결과뷰어
+            // 
+            this.e결과뷰어.Location = new System.Drawing.Point(6, 96);
+            this.e결과뷰어.Name = "e결과뷰어";
+            this.e결과뷰어.Size = new System.Drawing.Size(984, 762);
+            this.e결과뷰어.TabIndex = 1;
             // 
             // e외관결과
             // 
@@ -97,7 +119,7 @@
             this.e외관결과.Properties.Appearance.Options.UseTextOptions = true;
             this.e외관결과.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.e외관결과.Properties.ReadOnly = true;
-            this.e외관결과.Size = new System.Drawing.Size(159, 32);
+            this.e외관결과.Size = new System.Drawing.Size(114, 32);
             this.e외관결과.StyleController = this.layoutControl1;
             this.e외관결과.TabIndex = 9;
             // 
@@ -117,7 +139,7 @@
             this.eCTQ결과.Properties.Appearance.Options.UseTextOptions = true;
             this.eCTQ결과.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.eCTQ결과.Properties.ReadOnly = true;
-            this.eCTQ결과.Size = new System.Drawing.Size(159, 32);
+            this.eCTQ결과.Size = new System.Drawing.Size(114, 32);
             this.eCTQ결과.StyleController = this.layoutControl1;
             this.eCTQ결과.TabIndex = 8;
             // 
@@ -126,7 +148,7 @@
             this.e검사순번.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.Bind검사결과, "검사코드", true));
             this.e검사순번.EditValue = 0;
             this.e검사순번.EnterMoveNextControl = true;
-            this.e검사순번.Location = new System.Drawing.Point(617, 54);
+            this.e검사순번.Location = new System.Drawing.Point(572, 54);
             this.e검사순번.Name = "e검사순번";
             this.e검사순번.Properties.Appearance.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.e검사순번.Properties.Appearance.Options.UseFont = true;
@@ -137,7 +159,7 @@
             this.e검사순번.Properties.EditFormat.FormatString = "d4";
             this.e검사순번.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.e검사순번.Properties.ReadOnly = true;
-            this.e검사순번.Size = new System.Drawing.Size(525, 32);
+            this.e검사순번.Size = new System.Drawing.Size(414, 32);
             this.e검사순번.StyleController = this.layoutControl1;
             this.e검사순번.TabIndex = 1;
             // 
@@ -161,7 +183,7 @@
             // 
             this.e검사시간.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.Bind검사결과, "검사일시", true));
             this.e검사시간.EnterMoveNextControl = true;
-            this.e검사시간.Location = new System.Drawing.Point(617, 10);
+            this.e검사시간.Location = new System.Drawing.Point(572, 10);
             this.e검사시간.Name = "e검사시간";
             this.e검사시간.Properties.Appearance.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.e검사시간.Properties.Appearance.Options.UseFont = true;
@@ -172,7 +194,7 @@
             this.e검사시간.Properties.EditFormat.FormatString = "{0:yyyy-MM-dd HH:mm:ss}";
             this.e검사시간.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.e검사시간.Properties.ReadOnly = true;
-            this.e검사시간.Size = new System.Drawing.Size(525, 32);
+            this.e검사시간.Size = new System.Drawing.Size(414, 32);
             this.e검사시간.StyleController = this.layoutControl1;
             this.e검사시간.TabIndex = 5;
             // 
@@ -191,7 +213,7 @@
             this.layoutControlItem2});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(4, 4, 4, 4);
-            this.Root.Size = new System.Drawing.Size(1152, 900);
+            this.Root.Size = new System.Drawing.Size(996, 864);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem3
@@ -209,10 +231,10 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.e검사순번;
-            this.layoutControlItem4.Location = new System.Drawing.Point(529, 44);
+            this.layoutControlItem4.Location = new System.Drawing.Point(484, 44);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(6, 6, 6, 6);
-            this.layoutControlItem4.Size = new System.Drawing.Size(615, 46);
+            this.layoutControlItem4.Size = new System.Drawing.Size(504, 46);
             this.layoutControlItem4.Text = "Index";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(66, 25);
             // 
@@ -222,7 +244,7 @@
             this.layoutControlItem6.Location = new System.Drawing.Point(280, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(6, 6, 6, 6);
-            this.layoutControlItem6.Size = new System.Drawing.Size(249, 44);
+            this.layoutControlItem6.Size = new System.Drawing.Size(204, 44);
             this.layoutControlItem6.Text = "CTQ";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(66, 25);
             // 
@@ -232,17 +254,26 @@
             this.layoutControlItem7.Location = new System.Drawing.Point(280, 44);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Padding = new DevExpress.XtraLayout.Utils.Padding(6, 6, 6, 6);
-            this.layoutControlItem7.Size = new System.Drawing.Size(249, 46);
+            this.layoutControlItem7.Size = new System.Drawing.Size(204, 46);
             this.layoutControlItem7.Text = "Surface";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(66, 25);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.e결과뷰어;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 90);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(988, 766);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.e검사시간;
-            this.layoutControlItem2.Location = new System.Drawing.Point(529, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(484, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(6, 6, 6, 6);
-            this.layoutControlItem2.Size = new System.Drawing.Size(615, 44);
+            this.layoutControlItem2.Size = new System.Drawing.Size(504, 44);
             this.layoutControlItem2.Text = "Time";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(66, 25);
             // 
@@ -269,46 +300,160 @@
             // dockPanel1
             // 
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.FloatSize = new System.Drawing.Size(793, 857);
             this.dockPanel1.ID = new System.Guid("81df941b-8b06-4b13-9a7e-2c01f5ee4a1b");
-            this.dockPanel1.Location = new System.Drawing.Point(1152, 0);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 36);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(768, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(768, 900);
-            this.dockPanel1.Text = "Inspection Results";
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(924, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(924, 864);
+            this.dockPanel1.Text = "Cam Live";
             // 
             // dockPanel1_Container
             // 
-            this.dockPanel1_Container.Controls.Add(this.e결과목록);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 30);
+            this.dockPanel1_Container.Controls.Add(this.e뷰어);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 30);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(761, 867);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(917, 831);
             this.dockPanel1_Container.TabIndex = 0;
             // 
-            // e결과목록
+            // e뷰어
             // 
-            this.e결과목록.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.e결과목록.Location = new System.Drawing.Point(0, 0);
-            this.e결과목록.Name = "e결과목록";
-            this.e결과목록.Size = new System.Drawing.Size(761, 867);
-            this.e결과목록.TabIndex = 0;
+            this.e뷰어.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.e뷰어.ColorMapLowerRoiLimit = 0D;
+            this.e뷰어.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.e뷰어.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.e뷰어.ColorMapUpperRoiLimit = 1D;
+            this.e뷰어.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.e뷰어.DoubleTapZoomCycleLength = 2;
+            this.e뷰어.DoubleTapZoomSensitivity = 2.5D;
+            this.e뷰어.Location = new System.Drawing.Point(0, 0);
+            this.e뷰어.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.e뷰어.MouseWheelSensitivity = 1D;
+            this.e뷰어.Name = "e뷰어";
+            this.e뷰어.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("e뷰어.OcxState")));
+            this.e뷰어.Size = new System.Drawing.Size(917, 831);
+            this.e뷰어.TabIndex = 10;
             // 
-            // layoutControlItem8
+            // barManager1
             // 
-            this.layoutControlItem8.Control = this.e결과뷰어;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 90);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(1144, 802);
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextVisible = false;
+            this.barManager1.AllowCustomization = false;
+            this.barManager1.AllowMoveBarOnToolbar = false;
+            this.barManager1.AllowQuickCustomization = false;
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControl1);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.b스냅,
+            this.b영상,
+            this.b조명,
+            this.b비전});
             // 
-            // e결과뷰어
+            // bar1
             // 
-            this.e결과뷰어.Location = new System.Drawing.Point(6, 96);
-            this.e결과뷰어.Name = "e결과뷰어";
-            this.e결과뷰어.Size = new System.Drawing.Size(1140, 798);
-            this.e결과뷰어.TabIndex = 1;
+            this.bar1.BarName = "Tools";
+            this.bar1.CanDockStyle = ((DevExpress.XtraBars.BarCanDockStyle)((DevExpress.XtraBars.BarCanDockStyle.Top | DevExpress.XtraBars.BarCanDockStyle.Bottom)));
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.b스냅),
+            new DevExpress.XtraBars.LinkPersistInfo(this.b영상),
+            new DevExpress.XtraBars.LinkPersistInfo(this.b조명)});
+            this.bar1.OptionsBar.DrawBorder = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Tools";
+            // 
+            // b스냅
+            // 
+            this.b스냅.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.b스냅.Caption = "Snapshot";
+            this.b스냅.Hint = "Snapshot";
+            this.b스냅.Id = 1;
+            this.b스냅.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("b스냅.ImageOptions.SvgImage")));
+            this.b스냅.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
+            this.b스냅.Name = "b스냅";
+            // 
+            // b영상
+            // 
+            this.b영상.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.b영상.Caption = "Video";
+            this.b영상.Hint = "Video";
+            this.b영상.Id = 3;
+            this.b영상.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("b영상.ImageOptions.SvgImage")));
+            this.b영상.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
+            this.b영상.Name = "b영상";
+            // 
+            // b조명
+            // 
+            this.b조명.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.b조명.Caption = "Lights";
+            this.b조명.Hint = "Lights";
+            this.b조명.Id = 2;
+            this.b조명.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("b조명.ImageOptions.SvgImage")));
+            this.b조명.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
+            this.b조명.Name = "b조명";
+            // 
+            // b비전
+            // 
+            this.b비전.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.b비전.Caption = "Settings";
+            this.b비전.Hint = "Inspection Settings";
+            this.b비전.Id = 4;
+            this.b비전.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("b비전.ImageOptions.SvgImage")));
+            this.b비전.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
+            this.b비전.Name = "b비전";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1920, 36);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 900);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1920, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 36);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 864);
+            // 
+            // barDockControl1
+            // 
+            this.barDockControl1.CausesValidation = false;
+            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl1.Location = new System.Drawing.Point(1920, 36);
+            this.barDockControl1.Manager = this.barManager1;
+            this.barDockControl1.Size = new System.Drawing.Size(0, 864);
+            // 
+            // b카메라명
+            // 
+            this.b카메라명.Caption = "Camera";
+            this.b카메라명.Id = 0;
+            this.b카메라명.Name = "b카메라명";
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1920, 36);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 864);
             // 
             // ResultInspection
             // 
@@ -316,6 +461,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControl1);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "ResultInspection";
             this.Size = new System.Drawing.Size(1920, 900);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -330,12 +480,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e뷰어)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -357,8 +510,20 @@
         private DevExpress.XtraEditors.TextEdit eCTQ결과;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private ResultGrid e결과목록;
         private Viewport3D e결과뷰어;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private Cogutils.RecordDisplay e뷰어;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarButtonItem b스냅;
+        private DevExpress.XtraBars.BarCheckItem b영상;
+        private DevExpress.XtraBars.BarCheckItem b조명;
+        private DevExpress.XtraBars.BarButtonItem b비전;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControl1;
+        private DevExpress.XtraBars.BarStaticItem b카메라명;
     }
 }

@@ -52,13 +52,13 @@ namespace DSEV.Schemas
             //this.Manager = new CogJobManager("JobManager") { GarbageCollection = true, GarbageCollectionInterval = 4 };
             //Debug.WriteLine($"GarbageCollection={this.Manager.GarbageCollection}, Interval={this.Manager.GarbageCollectionInterval}", "비젼검사");
 
-            Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "4");
+            //Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "4");
             foreach (카메라구분 구분 in 그랩제어.대상카메라)
             {
                 비전도구 도구 = new 비전도구(모델, 구분);
                 도구.Init();
 
-                Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "5");
+                //Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "5");
                 this.Add(구분, 도구);
                 this.Manager.JobAdd(도구.Job);
             }

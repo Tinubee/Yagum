@@ -65,7 +65,8 @@ namespace DSEV.Schemas
         public Int32 이미지번호 = 0;
         [JsonIgnore]
         public string 라이브폴더경로 = Global.환경설정.사진저장 + Global.모델자료.선택모델.모델코드;
-
+        [JsonIgnore]
+        public Boolean 연속촬영여부 = false;
         [JsonIgnore]
         public const String 로그영역 = "Camera";
 
@@ -217,11 +218,6 @@ namespace DSEV.Schemas
         public Boolean ReverseX { get; set; } = false;
         [JsonIgnore]
         public Int32 number { get; set; } = 0;
-        
-
-
-
-
 
         public Boolean Init(CGigECameraInfo info)
         {
@@ -247,10 +243,6 @@ namespace DSEV.Schemas
 
             Debug.WriteLine($"{this.명칭}, {this.코드}, {this.주소}, {this.상태}");
             return this.상태;
-
-
-
-           
         }
 
         public override Boolean Init()
@@ -263,11 +255,8 @@ namespace DSEV.Schemas
             this.Camera.SetEnumValue("TriggerMode", 1);
 
             this.Active();
-
             //this.SoftwareTrigger();
             Global.정보로그(로그영역, "카메라 연결", $"[{this.구분}] 카메라 연결 성공!", false);
-
-
             return true;
         }
 
@@ -289,7 +278,18 @@ namespace DSEV.Schemas
 
         public override Boolean Stop()
         {
-            return 그랩제어.Validate($"{this.구분} Stop", Camera.StopGrabbing(), false);
+            try 
+            {
+                if (Camera == null) return false;
+
+                return 그랩제어.Validate($"{this.구분} Stop", Camera.StopGrabbing(), false); 
+            }
+            catch(Exception ee)
+            {
+                Debug.WriteLine($"{ee.Message}", "Grab Stop");
+                return false;
+            }
+           
         }
 
         private void ImageCallBack(IntPtr surfaceAddr, ref MV_FRAME_OUT_INFO_EX frameInfo, IntPtr user)

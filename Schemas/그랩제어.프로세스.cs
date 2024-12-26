@@ -107,22 +107,30 @@ namespace DSEV.Schemas
 
             장치.MatImage().SaveImage(Path.Combine(장치.라이브폴더경로, 장치.이미지번호.ToString("D5") + ".bmp"));
             장치.이미지번호 += 1;
-            //장치.MatImage().SaveImage($"C:\\IVM\\tempImage_{DateTime.Now.ToString("MM_dd_mm_ss")}.bmp");
+        }
 
-            //Global.비전검사.Run(장치.구분, 장치.CogImage(), Global.검사자료.수동검사);
-            //장치.TurnOff();
-            //if (Global.장치상태.자동수동)
-            //{
-            //    Int32 검사번호 = Global.장치통신.촬영위치번호(장치.구분);
-            //    검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
-            //    if (검사 == null) return;
-            //    Global.비전검사.Run(장치, 검사);
-            //}
-            //else
-            //{
-            //    Global.비전검사.Run(장치.구분, 장치.CogImage(), Global.검사자료.수동검사);
-            //    this.그랩완료보고?.Invoke(장치);
-            //}
+        public void 연속촬영(카메라구분 구분, Boolean 동작)
+        {
+            if (Global.장치상태.자동수동) return;
+            그랩장치 장치 = GetItem(구분);
+            if (장치 == null) return;
+            if (동작)
+            {
+                if (장치.연속촬영여부) return;
+                장치.연속촬영여부 = true;
+                스냅촬영(장치);
+            }
+            else
+            {
+                장치.연속촬영여부 = false;
+            }
+        }
+
+        public void 스냅촬영(그랩장치 장치)
+        {
+            new Thread(() => {
+                장치.SoftwareTrigger();
+            }).Start();
         }
 
         #region 오류메세지

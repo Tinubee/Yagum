@@ -60,12 +60,19 @@ namespace DSEV
                 검사자료 = new 검사자료();
                 VM제어 = new VM제어();
 
+                Debug.WriteLine("1");
                 로그자료.Init();
+                Debug.WriteLine("2");
                 환경설정.Init();
+                Debug.WriteLine("3");
                 유저자료.Init();
+                Debug.WriteLine("4");
                 모델자료.Init();
+                Debug.WriteLine("5");
                 검사자료.Init();
+                Debug.WriteLine("6");
                 VM제어.Init();
+                Debug.WriteLine("7");
                 if (Global.환경설정.동작구분 == 동작구분.Live)
                 {
                     장치통신.Init();
@@ -74,9 +81,9 @@ namespace DSEV
                     if (!장치통신.Open()) new Exception("PLC 서버에 연결할 수 없습니다.");
                     //조명제어.Init();
                 }
-                Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "3");
+                //Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "3");
                 비전검사.Init(); // 그랩장치가 먼저 Init 되어야 함
-                Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "6");
+                //Debug.WriteLine(Global.그랩제어[카메라구분.Cam01].SoftwareTrigger(), "6");
                 사진자료.Init();
 
                 Global.정보로그(로그영역, "초기화", "시스템을 초기화 합니다.", false);
