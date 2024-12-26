@@ -2,6 +2,7 @@
 using DSEV.Schemas;
 using MvUtils;
 using Newtonsoft.Json;
+using NPOI.HSSF.Record.Cont;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,16 +55,18 @@ namespace DSEV.Schemas
     {
         [Result(), ListBindable(false)]
         None,
-
-        //제품 폭
-        [Result(피씨구분.Server, 검사그룹.CTQ, 결과분류.Summary,장치구분.Cam01, None, "C1C5")]
-        C1C5 = 101,
-        [Result(피씨구분.Server,검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "C2C6")]
-        C2C6 = 102,
-        [Result(피씨구분.Server,검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "C3C7")]
-        C3C7 = 103,
-        [Result(피씨구분.Server,검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "C4C8")]
-        C4C8 = 104,
+        [Result(피씨구분.Server, 검사그룹.CTQ, 결과분류.Summary,장치구분.Cam01, None, "Point01")]
+        Point01 = 101,
+        [Result(피씨구분.Server,검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "Point02")]
+        Point02 = 102,
+        [Result(피씨구분.Server,검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "Point03")]
+        Point03 = 103,
+        [Result(피씨구분.Server,검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "Point04")]
+        Point04 = 104,
+        [Result(피씨구분.Server, 검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "Point05")]
+        Point05 = 105,
+        [Result(피씨구분.Server, 검사그룹.CTQ, 결과분류.Summary, 장치구분.Cam01, None, "Point06")]
+        Point06 = 106,
     }
 
     public enum 단위구분
@@ -150,8 +153,12 @@ namespace DSEV.Schemas
 
         public void Init()
         {
+
             this.카메라여부 = CameraAttribute.IsCamera(this.검사장치);
             ResultAttribute a = Utils.GetAttribute<ResultAttribute>(this.검사항목);
+
+            //if (a == null) return;
+
             this.변수명칭 = a.변수명칭;
             this.결과항목 = a.결과항목;
             this.결과부호 = a.결과부호;

@@ -102,10 +102,10 @@ namespace DSEV.Schemas
             //InspItems.Add(new Label3D(검사항목.f15) { Point = new Point3D(+183.75, -108.5, tz), Origin = new Point3D(+183.75, -108.5 - 20, tz), Name = "f15", LabelStyle = NamePrintType.Down });
             //InspItems.Add(new Label3D(검사항목.f16) { Point = new Point3D(+228.50, -108.5, tz), Origin = new Point3D(+228.50, -108.5 - 20, tz), Name = "f16", LabelStyle = NamePrintType.Down });
 
-            InspItems.Add(new Width3D(검사항목.C1C5) { Point = new Point3D(-200, -38, tz + offset), PointS = new Point3D(-200, -hy, tz + offset), PointE = new Point3D(-200, hy, tz + offset), Name = "C1C5", LabelS = "C1", LabelE = "C5", LabelMargin = 6, LabelStyle = NamePrintType.Up });
-            InspItems.Add(new Width3D(검사항목.C2C6) { Point = new Point3D(-75, -38, tz + offset), PointS = new Point3D(-75, -hy, tz + offset), PointE = new Point3D(-75, hy, tz + offset), Name = "C2C6", LabelS = "C2", LabelE = "C6", LabelMargin = 6, LabelStyle = NamePrintType.Up });
-            InspItems.Add(new Width3D(검사항목.C3C7) { Point = new Point3D(+75, -39, tz + offset), PointS = new Point3D(+75, -hy, tz + offset), PointE = new Point3D(+75, hy, tz + offset), Name = "C3C7", LabelS = "C3", LabelE = "C7", LabelMargin = 6, LabelStyle = NamePrintType.Up });
-            InspItems.Add(new Width3D(검사항목.C4C8) { Point = new Point3D(+200, -39, tz + offset), PointS = new Point3D(+200, -hy, tz + offset), PointE = new Point3D(+200, hy, tz + offset), Name = "C4C8", LabelS = "C4", LabelE = "C8", LabelMargin = 6, LabelStyle = NamePrintType.Up });
+            //InspItems.Add(new Width3D(검사항목.C1C5) { Point = new Point3D(-200, -38, tz + offset), PointS = new Point3D(-200, -hy, tz + offset), PointE = new Point3D(-200, hy, tz + offset), Name = "C1C5", LabelS = "C1", LabelE = "C5", LabelMargin = 6, LabelStyle = NamePrintType.Up });
+            //InspItems.Add(new Width3D(검사항목.C2C6) { Point = new Point3D(-75, -38, tz + offset), PointS = new Point3D(-75, -hy, tz + offset), PointE = new Point3D(-75, hy, tz + offset), Name = "C2C6", LabelS = "C2", LabelE = "C6", LabelMargin = 6, LabelStyle = NamePrintType.Up });
+            //InspItems.Add(new Width3D(검사항목.C3C7) { Point = new Point3D(+75, -39, tz + offset), PointS = new Point3D(+75, -hy, tz + offset), PointE = new Point3D(+75, hy, tz + offset), Name = "C3C7", LabelS = "C3", LabelE = "C7", LabelMargin = 6, LabelStyle = NamePrintType.Up });
+            //InspItems.Add(new Width3D(검사항목.C4C8) { Point = new Point3D(+200, -39, tz + offset), PointS = new Point3D(+200, -hy, tz + offset), PointE = new Point3D(+200, hy, tz + offset), Name = "C4C8", LabelS = "C4", LabelE = "C8", LabelMargin = 6, LabelStyle = NamePrintType.Up });
 
             //InspItems.Add(new Circle3D(검사항목.a1) { Point = new Point3D(-200, +105, tz), Name = "a1", LabelStyle = NamePrintType.Up });
             //InspItems.Add(new Circle3D(검사항목.a2) { Point = new Point3D(0, 200, tz), Name = "a2", LabelStyle = NamePrintType.Up });

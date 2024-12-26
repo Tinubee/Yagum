@@ -212,7 +212,7 @@ namespace DSEV.Schemas
                 this.검사시작 = DateTime.Now;
                 this.ToolBlock.Run();
                 //this.표면검사(검사);
-                검사?.SetResults(this.카메라, this.GetResults());
+                //검사?.SetResults(this.카메라, this.GetResults());
                 DisplayResult(검사);
                 this.검사종료 = DateTime.Now;
                 if (Global.장치상태.자동수동 && 검사 != null)

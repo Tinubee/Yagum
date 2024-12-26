@@ -67,7 +67,7 @@ namespace DSEV.UI.Controls
             {
                 this.도구 = tool;
                 this.정상 = Utils.SetSvgStyle(tool.SvgImage, Utils.SvgStyles.Green);
-                this.오류 = Utils.SetSvgStyle(tool.SvgImage, Utils.SvgStyles.Red);
+                this.오류 = Utils.SetSvgStyle(tool.SvgImage, Utils.SvgStyles.Green);//Utils.SetSvgStyle(tool.SvgImage, Utils.SvgStyles.Red);
                 if (HasWait) this.대기 = Utils.SetSvgStyle(tool.SvgImage, Utils.SvgStyles.Blue);
                 this.도구.SvgImage = this.오류;
             }

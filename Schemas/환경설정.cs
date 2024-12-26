@@ -46,7 +46,9 @@ namespace DSEV.Schemas
         public String 서버주소 { get; set; } = "192.168.3.5";
         [Translation("Work PC Port", "작업 컴퓨터 포트"), JsonProperty("WorkPort")] // Client or Server
         public Int32 서버포트 { get; set; } = 8080;
-
+        public Boolean 검사시작 { get; set; } = false;
+        [Translation("Index", "검사번호"), JsonProperty("IndexNumber")]
+        public Int32 검사번호 { get; set; } = 0;
         //[Translation("MES Server Host", "MES 서버 주소"), JsonProperty("MESHost")] // Client or Server
         //public String MES주소 { get; set; } = "192.168.10.2";
         //[Translation("MES Server Port", "MES 서버 포트"), JsonProperty("MESPort")] // Client or Server

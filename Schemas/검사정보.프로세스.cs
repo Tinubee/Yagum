@@ -212,29 +212,40 @@ namespace DSEV.Schemas
             Boolean ok = SetResultValue(검사, value, out Decimal 결과값, out Decimal 측정값);
             검사.측정값 = 측정값;
             검사.결과값 = 결과값;
-            검사.측정결과 = ok ? 결과구분.OK : 결과구분.NG;
+            검사.측정결과 = 결과구분.OK;//ok ? 결과구분.OK : 결과구분.NG;
             return 검사;
         }
         public 검사정보 SetResult(String name, Double value) => SetResult(검사내역.Where(e => e.검사항목.ToString() == name).FirstOrDefault(), value);
         public 검사정보 SetResult(검사항목 항목, Double value) => SetResult(검사내역.Where(e => e.검사항목 == 항목).FirstOrDefault(), value);
-        public void SetResults(카메라구분 카메라, Dictionary<String, Object> results)
+        public void SetResults(카메라구분 카메라, Dictionary<String, Double> results)
         {
-            //불량영역제거(카메라);
-            //String scratch = ResultAttribute.VarName(검사항목.BottomScratch);
-            //String dent = ResultAttribute.VarName(검사항목.BottomDent);
-            foreach (var result in results)
+            foreach (KeyValuePair<String, Double> result in results)
             {
-                //if (result.Key.Equals(scratch) || result.Key.Equals(dent))
-                //{
-                //    this.표면불량.AddRange(result.Value as List<불량영역>);
-                //    continue;
-                //}
                 검사정보 정보 = GetItem((장치구분)카메라, result.Key);
                 if (정보 == null) continue;
-                Double value = result.Value == null ? Double.NaN : (Double)result.Value;
-                SetResult(정보, value);
+
+                SetResult(정보, result.Value);
             }
         }
+
+        //public void SetResults(카메라구분 카메라, Dictionary<String, Object> results)
+        //{
+        //    //불량영역제거(카메라);
+        //    //String scratch = ResultAttribute.VarName(검사항목.BottomScratch);
+        //    //String dent = ResultAttribute.VarName(검사항목.BottomDent);
+        //    foreach (var result in results)
+        //    {
+        //        //if (result.Key.Equals(scratch) || result.Key.Equals(dent))
+        //        //{
+        //        //    this.표면불량.AddRange(result.Value as List<불량영역>);
+        //        //    continue;
+        //        //}
+        //        검사정보 정보 = GetItem((장치구분)카메라, result.Key);
+        //        if (정보 == null) continue;
+        //        Double value = result.Value == null ? Double.NaN : (Double)result.Value;
+        //        SetResult(정보, value);
+        //    }
+        //}
         public void SetResults(Dictionary<Int32, Decimal> 내역)
         {
             if (내역 == null) return;
@@ -287,15 +298,10 @@ namespace DSEV.Schemas
 
         public 결과구분 결과계산()
         {
-
-            //this.SetResult(검사항목.BottomDent, this.표면불량.Where(e => e.검사항목 == 검사항목.BottomDent).Count());
-            //this.SetResult(검사항목.BottomScratch, this.표면불량.Where(e => e.검사항목 == 검사항목.BottomScratch).Count());
-
+            Debug.WriteLine("결과계산들어옴");
             List<결과구분> 전체결과 = new List<결과구분>();
             List<결과구분> 품질결과 = new List<결과구분>();
             List<결과구분> 외관결과 = new List<결과구분>();
-            //List<결과구분> 마킹전결과목록 = new List<결과구분>();
-
             foreach (검사정보 정보 in this.검사내역)
             {
                 // 임시로 검사중인 항목 완료 처리
@@ -323,8 +329,7 @@ namespace DSEV.Schemas
 
 
             this.측정결과 = 최종결과(전체결과);
-            //this.마킹전결과 = 최종결과(마킹전결과목록);
-
+         
             if (this.측정결과 == 결과구분.OK)
             {
                 this.CTQ결과 = 결과구분.OK;

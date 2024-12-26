@@ -25,6 +25,12 @@ namespace DSEV.Schemas
             foreach (검사항목 항목 in typeof(검사항목).GetEnumValues())
             {
                 if (항목 == 검사항목.None) continue;
+
+                if(항목.ToString() == "Point07")
+                {
+
+                }
+
                 ResultAttribute a = Utils.GetAttribute<ResultAttribute>(항목);
                 this.Add(new 검사정보() { 검사항목 = 항목, 검사명칭 = 항목.ToString(), 검사그룹 = a.검사그룹, 검사장치 = a.장치구분, 결과분류 = a.결과분류 });
             }

@@ -28,12 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.VM뷰어 = new VMControls.Winform.Release.VmRenderControl();
             this.SuspendLayout();
+            // 
+            // VM뷰어
+            // 
+            this.VM뷰어.BackColor = System.Drawing.Color.Black;
+            this.VM뷰어.CoordinateInfoVisible = true;
+            this.VM뷰어.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VM뷰어.ImageSource = null;
+            this.VM뷰어.IsShowCustomROIMenu = false;
+            this.VM뷰어.Location = new System.Drawing.Point(0, 0);
+            this.VM뷰어.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.VM뷰어.ModuleSource = null;
+            this.VM뷰어.Name = "VM뷰어";
+            this.VM뷰어.Size = new System.Drawing.Size(783, 575);
+            this.VM뷰어.TabIndex = 0;
             // 
             // Viewport3D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.VM뷰어);
             this.Name = "Viewport3D";
             this.Size = new System.Drawing.Size(783, 575);
             this.ResumeLayout(false);
@@ -41,5 +57,7 @@
         }
 
         #endregion
+
+        private VMControls.Winform.Release.VmRenderControl VM뷰어;
     }
 }

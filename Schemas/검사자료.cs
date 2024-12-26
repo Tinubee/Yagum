@@ -131,9 +131,9 @@ namespace DSEV.Schemas
 
 
 
-       
 
-       
+
+
         //public 검사결과 외폭검사수행(Int32 검사코드, Dictionary<센서항목, Single> 자료)
         //{
         //    검사결과 검사 = 검사항목찾기(검사코드);
@@ -151,6 +151,7 @@ namespace DSEV.Schemas
         //}
         public 검사결과 검사결과계산(Int32 검사코드)
         {
+            Debug.WriteLine("검사결과계산들어옴");
             if (검사코드 < 1) return null;
             검사결과 검사 = null;
             if (Global.장치상태.자동수동)
@@ -161,10 +162,10 @@ namespace DSEV.Schemas
                     Global.오류로그(로그영역.GetString(), "결과계산", $"[{(Int32)Global.환경설정.선택모델}.{검사코드}] 해당 검사가 없습니다.", false);
                     return null;
                 }
-                검사.결과계산();
-                Debug.WriteLine("수량추가전");
+                //검사.결과계산();
+                //Debug.WriteLine("수량추가전");
                 Global.모델자료.수량추가(검사.모델구분, 검사.측정결과);
-                Debug.WriteLine("수량추가후");
+                //Debug.WriteLine("수량추가후");
                 this.검사스플.Remove(검사코드);
             }
             else
@@ -177,7 +178,7 @@ namespace DSEV.Schemas
             return 검사;
         }
 
-        public void 검사완료알림함수(검사결과 결과)=> this.검사완료알림?.Invoke(결과);
+        public void 검사완료알림함수(검사결과 결과) => this.검사완료알림?.Invoke(결과);
 
         public void 검사수행알림(검사결과 검사) => this.검사완료알림?.Invoke(검사);
         public void 수동검사결과(카메라구분 카메라, 검사결과 검사)
@@ -194,8 +195,16 @@ namespace DSEV.Schemas
             if (검사코드 > 0 && this.검사스플.ContainsKey(검사코드))
                 검사 = this.검사스플[검사코드];
             if (검사 == null && !신규여부)
-                Global.오류로그(로그영역.GetString(), "제품검사", $"[{검사코드}] Index가 없습니다.", true);
+            {
+
+            }
+            //Global.오류로그(로그영역.GetString(), "제품검사", $"[{검사코드}] Index가 없습니다.", true);
             return 검사;
+        }
+        public 검사결과 검사항목찾기2()
+        {
+            this.수동검사.Reset();
+            return this.수동검사;
         }
 
         public 검사결과 현재검사찾기()
@@ -290,7 +299,8 @@ namespace DSEV.Schemas
                 select d;
             List<검사정보> 정보 = query2.AsNoTracking().ToList();
 
-            자료.ForEach(l => {
+            자료.ForEach(l =>
+            {
                 l.AddRange(정보.Where(d => d.검사일시 == l.검사일시).ToList());
             });
             return 자료;
@@ -419,7 +429,7 @@ namespace DSEV.Schemas
                     // CSV 파일 경로
 
                     string csvFileFolder = "C:\\IVM\\RandR";
-                    string csvFileName =$"GageR&R_{sheetnum}_{DateTime.Now.ToString("yyMMddHHmmss")}.csv";
+                    string csvFileName = $"GageR&R_{sheetnum}_{DateTime.Now.ToString("yyMMddHHmmss")}.csv";
 
 
                     //var csvFilePath = $"C:\\IVM\\RandR\\GageR&R_{sheetnum}_{DateTime.Now.ToString("yyMMddHHmmss")}.csv";
@@ -428,7 +438,7 @@ namespace DSEV.Schemas
                     // 폴더 없으면 만들고
                     if (!Directory.Exists(csvFileFolder)) Directory.CreateDirectory(csvFileFolder);
 
-                    
+
 
                     // CSV 파일 경로
                     var csvFilePath = Path.Combine(csvFileFolder, csvFileName);

@@ -17,7 +17,6 @@ namespace DSEV
         private LocalizationMain 번역 = new LocalizationMain();
         private UI.Controls.WaitForm WaitForm;
         private StateForm StateForm = null;
-
         public MainForm()
         {
             InitializeComponent();
@@ -41,6 +40,9 @@ namespace DSEV
 
             if (e.KeyCode == Keys.Q)
             {
+                Global.환경설정.검사시작 = false;
+
+                
 
                 Int32 서보초기X속도 = 50000;
                 Int32 서보초기X위치 = 17000000;
@@ -69,7 +71,9 @@ namespace DSEV
             if (e.KeyCode == Keys.W)
             {
 
-
+                Global.환경설정.검사시작 = true;
+                Global.환경설정.검사번호++;
+                Global.검사자료.검사시작(Global.환경설정.검사번호);
                 /////////////////////
                 ///
                 Int32 서보검사X속도 = 50000;

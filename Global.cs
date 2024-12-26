@@ -31,6 +31,7 @@ namespace DSEV
 
         public static 검사자료 검사자료;
         public static 캘리브자료 캘리브;
+        public static VM제어 VM제어;
 
         public static class 장치상태
         {
@@ -57,12 +58,14 @@ namespace DSEV
                 사진자료 = new 사진자료();
                 //추후 합치기 필요 임시.
                 검사자료 = new 검사자료();
+                VM제어 = new VM제어();
 
                 로그자료.Init();
                 환경설정.Init();
                 유저자료.Init();
                 모델자료.Init();
                 검사자료.Init();
+                VM제어.Init();
                 if (Global.환경설정.동작구분 == 동작구분.Live)
                 {
                     장치통신.Init();

@@ -70,6 +70,13 @@ namespace DSEV.Schemas
             if (this.상부촬영트리거신호 && this.상부촬영완료신호)
             {
                 this.상부촬영완료신호 = false;
+                if (Global.환경설정.검사시작)
+                    this.전체완료알림?.Invoke();
+                else
+                {
+                    this.초기완료알림?.Invoke();
+                    Global.정보로그("원점복귀", "원점복귀완료", "원점복귀완료", true);
+                }
                 Debug.WriteLine("완료신호끔");
             }
             
